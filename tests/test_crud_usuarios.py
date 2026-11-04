@@ -12,7 +12,7 @@ def test_crud_usuarios():
             URL_BASE,
             data = {
                 "nome": "Fulano da Silva",
-                "email": "beltrano+5@qa.com.br",
+                "email": "beltrano+11@qa.com.br",
                 "password": "teste",
                 "administrador": "true"
             }
@@ -23,5 +23,41 @@ def test_crud_usuarios():
 
         user_id = response_create.json()['_id']
 
-        
+
+        # READ
+
+        response_read = request_context.get(f"{URL_BASE}/{user_id}")
+        assert response_read.status == 200
+        assert response_read.json()['_id'] == user_id
+        assert response_read.json()['email'] == 'beltrano+11@qa.com.br'
+
+        #UPDATE
+
+        response_update = request_context.put(f"{URL_BASE}/{user_id}",
+        data = {
+                "nome": "UP DATE FULANO 1",
+                "email": "beltrano+11@qa.com.br",
+                "password": "teste",
+                "administrador": "true"
+            })
+
+        assert response_update.status == 200
+        assert response_update.json()['message'] == 'Registro alterado com sucesso'
+
+        response_read = request_context.get(f"{URL_BASE}/{user_id}")
+        assert response_read.status == 200
+        assert response_read.json()['email'] == 'beltrano+11@qa.com.br'
+
+
+        # DELETE
+
+        response_delete =request_context.delete (f"{URL_BASE}/{user_id}")
+
+        assert response_delete.status == 200
+        assert response_delete.json()['message'] == 'Registro excluído com sucesso'
+
+
+
+
+
 
