@@ -36,7 +36,7 @@ def test_crud_usuarios():
         response_update = request_context.put(f"{URL_BASE}/{user_id}",
         data = {
                 "nome": "UP DATE FULANO 1",
-                "email": "beltrano+11@qa.com.br",
+                "email": "beltrano+12@qa.com.br",
                 "password": "teste",
                 "administrador": "true"
             })
@@ -46,7 +46,7 @@ def test_crud_usuarios():
 
         response_read = request_context.get(f"{URL_BASE}/{user_id}")
         assert response_read.status == 200
-        assert response_read.json()['email'] == 'beltrano+11@qa.com.br'
+        assert response_read.json()['email'] == 'beltrano+12@qa.com.br'
 
 
         # DELETE
