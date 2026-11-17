@@ -8,7 +8,7 @@ def test_crud_usuarios(api_context):
 
         # CREATE
     response_create = service.cadastrarUsuario(nome="Fulano da Silva1",
-                                               email="beltrano+22@qa.com.br",
+                                               email="beltrano+23@qa.com.br",
                                                password="teste",
                                                administrador="true")
 
@@ -22,7 +22,7 @@ def test_crud_usuarios(api_context):
 
     validar_status (response_read,200)   
     assert response_read.json()['_id'] == user_id
-    assert response_read.json()['email'] == 'beltrano+22@qa.com.br'
+    assert response_read.json()['email'] == 'beltrano+23@qa.com.br'
 
 
         #UPDATE
@@ -32,7 +32,7 @@ def test_crud_usuarios(api_context):
                                             password= "teste",
                                             administrador="true")
 
-    validar_status (response_update, 200)
+    validar_status (response_update,200)
     validar_mensagem_json (response_update, 'Registro alterado com sucesso' )
     
 

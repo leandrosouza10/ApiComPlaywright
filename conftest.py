@@ -1,5 +1,6 @@
 import pytest
 from playwright.sync_api import sync_playwright
+from page_objects.usuarios import Usuarios
 
 BASE_URL = "https://serverest.dev"
 EMAIL_TESTE = "teste2@teste.com"
@@ -51,6 +52,12 @@ def token(api_context):
     token_str = response_login.json()["authorization"] # Salva token JWT
     print(f"Login realizado com sucesso. Token gerado {token_str[:20]}...")
     return token_str
+
+@pytest.fixture()
+def usuario_servico(api_context):
+   """Retorna um service já pronto para testes de usuários"""
+   return Usuarios(api_context)
+
  
 
 
