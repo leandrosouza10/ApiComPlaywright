@@ -4,9 +4,10 @@ from helpers.validators import validar_status
 @pytest.mark.parametrize(
     "nome, email, password, administrador, status_esperado",
     [
-        ("administrador", "teste@tessseeeete5.com", "1234", "true", 201),
+        ("administrador", "teste@tessseeeete7.com", "1234", "true", 201),
         ("", "teste@teste.com", "errado", "false", 400),
         ("user", "", "1234", "false", 400),
+        ("user1", "", "1234", "false", 400)
     ]
 )
 
