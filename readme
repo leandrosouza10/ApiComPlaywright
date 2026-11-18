@@ -1,0 +1,167 @@
+# Automação de Testes de API com Playwright e Pytest
+
+Projeto desenvolvido em Python para automação de testes de API, utilizando **Playwright**, **Pytest** e **Allure Report** para execução, validação e geração de relatórios dos testes automatizados.
+
+## Tecnologias utilizadas
+
+- Python
+- Playwright
+- Pytest
+- Allure Report
+
+## Estrutura do projeto
+
+```text
+automacaoPlaywrightApi/
+│
+├── allure-results/                # Resultados dos testes para o Allure
+│
+├── helpers/
+│   └── validators.py              # Funções auxiliares de validação
+│
+├── page_objects/
+│   └── usuarios.py                # Métodos relacionados aos usuários
+│
+├── tests/
+│   ├── test_cadastrar_usuario.py
+│   ├── test_crud_usuarios.py
+│   ├── test_login.py
+│   ├── test_primeiro_get.py
+│   ├── test_respostas.py
+│   ├── test_validar_erros_ao_cadastrar_usuario.py
+│   └── test_validar_schema_usuario.py
+│
+├── venv/                          # Ambiente virtual Python
+├── .gitignore                     # Arquivos ignorados pelo Git
+├── conftest.py                    # Fixtures e configurações do Pytest
+├── pytest.ini                     # Configurações do Pytest
+├── report.html                    # Relatório HTML dos testes
+└── requirements.txt               # Dependências do projeto
+```
+
+## Setup — Configuração do ambiente
+
+### 1. Instalação do Python
+
+1. Acesse o site oficial: https://www.python.org/downloads/
+2. Baixe e instale o Python.
+3. Durante a instalação, marque a opção **Add Python to PATH**.
+
+Para verificar se o Python foi instalado corretamente, execute no terminal:
+
+```bash
+python --version
+```
+
+### 2. Criando o ambiente virtual
+
+Na pasta raiz do projeto, execute:
+
+```bash
+python -m venv venv
+```
+
+Ative o ambiente virtual no Windows:
+
+```powershell
+venv\Scripts\activate
+```
+
+Caso esteja utilizando PowerShell, execute:
+
+```powershell
+.\venv\Scripts\Activate.ps1
+```
+
+### 3. Instalando Playwright + Pytest
+
+Com o ambiente virtual ativado, execute:
+
+```bash
+pip install pytest pytest-playwright
+```
+
+Instale os navegadores do Playwright:
+
+```bash
+playwright install
+```
+
+Caso o projeto já tenha todas as dependências registradas no arquivo `requirements.txt`, você poderá instalá-las com:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Executando os testes
+
+Para executar todos os testes automatizados:
+
+```bash
+pytest
+```
+
+Para executar um teste específico:
+
+```bash
+pytest tests/test_login.py
+```
+
+Para executar os testes exibindo mais detalhes:
+
+```bash
+pytest -v
+```
+
+## Allure Report — Relatórios de testes
+
+O Allure permite gerar relatórios visuais com informações sobre os testes executados, incluindo resultados, falhas e histórico, quando configurado.
+
+### 1. Instalar o plugin Allure para Pytest
+
+```bash
+pip install allure-pytest
+```
+
+### 2. Executar os testes gerando resultados para o Allure
+
+```bash
+pytest --alluredir=allure-results
+```
+
+Os resultados serão armazenados na pasta `allure-results`.
+
+### 3. Baixar e configurar o Allure
+
+Acesse o repositório oficial:
+
+https://github.com/allure-framework/allure2/releases
+
+1. Baixe a versão do Allure compatível com seu sistema operacional, em formato `.zip`.
+2. Descompacte o arquivo em uma pasta de sua preferência.
+3. Localize a pasta `bin` dentro do diretório extraído.
+4. Adicione o caminho completo dessa pasta `bin` à variável de ambiente **Path** do Windows.
+5. Abra um novo terminal para aplicar a configuração.
+
+**Observação:** O Allure CLI requer Java instalado e configurado no ambiente.
+
+Para verificar se o Allure foi configurado corretamente:
+
+```bash
+allure --version
+```
+
+### 4. Gerar o relatório visual
+
+Após executar os testes, utilize:
+
+```bash
+allure serve allure-results
+```
+
+Esse comando gera o relatório temporariamente e abre sua visualização no navegador.
+
+
+## Autor
+
+Projeto de estudos e aperfeiçoamento profissional em automação de testes de API com Python, Playwright e Pytest.
